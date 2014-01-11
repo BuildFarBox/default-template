@@ -1,0 +1,9 @@
+{{ set_content_type('application/json') }}
+{
+    "account": {{ account.json}},
+    "interface": {{ interface.json }},
+    "folders":{{ get_data(types='folder', path='/', level=1, limit=30, with_page=False).json}},
+    "site" : {{ site.json }},
+    "sites":  {{ sites.json}},
+    "template_packages": {{ template_packages.json }}
+}

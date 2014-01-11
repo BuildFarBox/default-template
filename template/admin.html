@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {{ need_admin() }}
+    <meta charset="utf-8">
+    <title>{{ site.title }} - Admin</title>
+    {{ get_resource('admin.css') }}
+
+</head>
+<body>
+
+
+<div id="layout" class="pure-g-r">
+    <div class="pure-u" id="menu">
+        <div class="pure-menu pure-menu-open">
+            <a class="pure-menu-heading" target="_blank" data-bind="attr:{href: 'http://'+site.domain}">
+                <span data-bind="text: get_text('Visit Site')"></span>
+            </a>
+
+            <ul data-bind="foreach: menus">
+                <li>
+                    <a href="#" data-bind="
+                                click: function(){$parent.click_menu($index())},
+                                css:{'selected': $index()==$parent.current_menu()}">
+                        <i data-bind="css:icon"></i>
+                        <span data-bind="text:title"></span>
+                    </a>
+
+                </li>
+            </ul>
+
+        </div>
+    </div>
+
+
+
+<div id="container" class="pure-u">
+
+    <!-- ko if: menus[current_menu()].template -->
+    <div data-bind="template: {name: menus[current_menu()].template}">
+
+    </div>
+    <!-- /ko -->
+
+
+    <script type="text/html" id="setup-template">
+        <div id="header" class="pure-u">
+            <select data-bind="
+                value: current_site_domain,
+                options:sites,
+                optionsText: 'title',
+                optionsValue: 'domain'
+                ">
+            </select>
+            <a id="logout" href="/logout"><i class="fa fa-power-off"></i><span data-bind="text: get_text('Logout')"></span></a>
+        </div>
+
+        <ul class="site-configs-menu" data-bind="foreach: config_pages">
+            <li>
+                <a href="#"
+                   data-bind="text: title,click: function(){$parent.current_config_page($index())}, css:{'selected': $index()==$parent.current_config_page()}"></a>
+            </li>
+        </ul>
+
+        <form class="pure-form pure-form-stacked">
+            <div data-bind="foreach: config_pages">
+                <section data-bind="foreach: groups, visible:$index()==$parent.current_config_page()">
+                    <fieldset>
+                        <legend data-bind="text: title"></legend>
+                        <div class="fb-group" data-bind="foreach: cells">
+                            <div data-bind="foreach: parts, attr: {class: 'fb-cell fb-u-'+parts_per_line}">
+                                <div class="fb-u">
+
+                                    <!-- ko if: (model=='text')-->
+                                    <label data-bind="attr:{for: id}, text: title"></label>
+                                    <input data-bind="attr:{id: id, placeholder: default_value }, value:value"
+                                           type="text" class="fb_config">
+                                    <!-- /ko -->
+
+                                    <!-- ko if: model=='select' -->
+                                    <label data-bind="attr:{for: id}, text: title"></label>
+                                    <select data-bind="attr:{id: id}, value: value, options:options, optionsText: 'title', optionsValue: 'value' "
+                                            class="fb_config">
+                                    </select>
+                                    <!-- /ko -->
+
+                                    <!-- ko if: model=='textarea' -->
+                                    <label data-bind="attr:{for: id}, text: title"></label>
+                                    <textarea data-bind="attr:{id: id} , value: value, css:{is_list: is_list}"
+                                              class="fb_config"></textarea>
+                                    <!-- /ko -->
+
+
+                                    <!-- ko if: model=='check' -->
+                                    <input data-bind="attr:{id: id, checked: checked}" type="checkbox"
+                                           class="auto-width fb_config">
+                                    <span data-bind="text: title"></span>
+                                    <!-- /ko -->
+
+                                </div>
+                                <div class="fb-s" data-bind="visible: ($index()+1)%$parent.parts_per_line"></div>
+
+                            </div>
+                        </div>
+                    </fieldset>
+                </section>
+            </div>
+
+            <div class="pure-g-r">
+                <div class="pure-u-1 submit">
+                    <button data-bind="click: save_configs, text: get_text('Save Configs')" type="submit"
+                            class="pure-button pure-input-1-2 pure-button-primary">
+                    </button>
+                </div>
+            </div>
+
+        </form>
+
+    </script>
+
+
+    <script type="text/html" id="templates-template">
+        <div class="templates-container">
+            <div class="templates">
+                <select data-bind="
+                    value:template_chooser.current_template_key,
+                    options:template_chooser.template_packages,
+                    optionsText: 'title',
+                    optionsValue: 'template_key',
+                    optionsCaption:get_text('Choose Templates...')">
+
+                </select>
+
+                <span data-bind="if:template_chooser.show_chooser_button">
+                    <button class="pure-button pure-button-primary" data-bind="click:template_chooser.use_this_template,text:get_text('Use this One')"></button>
+                </span>
+
+                <span data-bind="if: template_chooser.this_used_now">
+                    <span data-bind="text:get_text('Current Template of this Site')"></span>
+                </span>
+
+
+
+            </div>
+
+
+            <iframe data-bind="attr:{src:'/?template_key='+template_chooser.current_template_key()}"></iframe>
+
+        </div>
+
+    </script>
+
+    <script type="text/html" id="st-template">
+        <div class="full-window full-height">
+            <iframe data-bind="attr:{src:'/statistics'+url_query_part()}"></iframe>
+        </div>
+    </script>
+
+    <script type="text/html" id="domain-template">
+        <div class="full-window full-height">
+            <iframe src="/service/domain"></iframe>
+        </div>
+    </script>
+
+    <script type="text/html" id="pay-template">
+        <div class="full-window full-height">
+            <iframe src="/service/pricing"></iframe>
+        </div>
+    </script>
+
+    <script type="text/html" id="doc-template">
+        <div class="full-window full-height">
+            <iframe src="{{ farbox_doc_url }}"></iframe>
+        </div>
+    </script>
+
+    <script type="text/html" id="editor-template">
+        <div class="full-window full-height">
+            <iframe  data-bind="attr:{src:'/editor'}"}></iframe>
+        </div>
+    </script>
+
+
+</div>
+
+
+</div>
+
+{{ get_resource('admin.js') }}
+
+</body>
+</html>

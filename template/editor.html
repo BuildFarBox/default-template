@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Editor</title>
+    {{ need_admin() }}
+    {{ get_resource('pure_editor.css') }}
+    {{ get_resource('pure_editor.js') }}
+</head>
+<body>
+
+
+<div id="main">
+
+    <div id="controls">
+        <div class="cmds">
+            <a href="#" id="hide_controls" data-bind="click: hide_controls">
+                <i class="fa fa-arrow-left"></i>
+             </a>
+            <a href="#"  id="create_post" data-bind="click: create_post">
+                <i class="fa fa-plus"></i>
+                New Post
+            </a>
+        </div>
+
+        <ul id="posts" data-bind="foreach: posts" class="posts">
+            <li>
+            <a href="#" data-bind="click: edit" class="post">
+                <span data-bind="text: title"></span>
+                <span data-bind="click: remove" class="remove">x</span>
+            </a>
+
+            </li>
+        </ul>
+    </div>
+
+
+    <div id="editor">
+        <input type="text" id="title" data-bind="value: current_post().title, event:{keyup: sync}"/>
+        <textarea  id="textarea" data-bind="event:{keyup: sync}"></textarea>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+        run_editor();
+</script>
+
+
+</body>
+</html>

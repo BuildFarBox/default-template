@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+
+    <link rel='alternate' type='application/rss+xml' title='atom 1.0' href='/feed' />
+    <title>{% block title %}{{ request.args.s or site.title }} {% endblock %}</title>
+
+    {{ load('fonts {{resource_host}}/lib/pure.css {{resource_host}}/site/css/blog.css') }}
+
+
+    {% block head %}
+    {% endblock %}
+
+</head>
+<body>
+
+<div class="pure-g-r" id="layout">
+
+    <div class="sidebar pure-u">
+        <div id="avatar">
+			<a href="/">
+				<img class="logo" src="{{ site.avatar }}" alt="{{ site.title }}">
+			</a>
+		</div>
+
+        <h1 class="brand-title">{{ site.title }}</h1>
+
+        <ul class="nav">
+            {% if has('images') %}
+            <li> <a href="/album">Albums</a></li>
+            {% endif %}
+            <li>{{ a_with_selected('/category', 'Categories') }}</li>
+            <li>{{ a_with_selected('/archive', 'Archive', equal=True) }}</li>
+            {% if site.tags %}
+            <li>{{ a_with_selected('/archive?use=tags', 'Tags') }}</li>
+            {% endif %}
+            {% if has('about.md') %}
+            <li>{{ a_with_selected('/about.md', 'About') }}</li>
+            {% endif %}
+            <li> <a href="/feed">RSS</a> </li>
+            <li><a href="#" onclick="new_post();return false">Write!</a></li>
+        </ul>
+
+        <ul class="my-socials">
+            {% set socials=['twitter', 'weibo', 'facebook', 'instagram', 'quora', 'github'] %}
+            {% for social in socials %}
+                {% if site.configs.get(social) %}
+            <li >
+                <a href="{{ get_social_url(social, site.configs.get(social)) }}" class="{{ social }}" target="_blank">
+                    <i class="fa fa-{{ social }}"></i>
+                </a>
+            </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+
+        <div class="search-bar">
+            <input type="text" id='search_value' value="{{ request.args.s }}" onkeyup="if (event.keyCode == 13) search();">
+            <a href="javascript:search()">
+                <i class="fa fa-search"></i>
+            </a>
+        </div>
+
+    </div>
+
+
+    <div class="pure-u-1">
+        <div id="main">
+            {% block content %}
+            {% endblock %}
+        </div>
+
+        <div id="footer">
+            <div class="powered_by">
+                <a target='_blank' href="http://www.farbox.com">Powered By FarBox.com</a>
+                {% if request.is_login %}
+                    <a href="/admin">Admin</a>
+                {% else %}
+                    <a href="#" onclick="login('/admin')" class="admin">Admin</a>
+                {% endif %}
+                <a href="/?action=import" target="_blank">Move from WordPress</a>
+                <span>©2012-2015 Z.R.E.Y Inc.</span>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="{{ resource_host }}/site/js/basic.js"></script>
+
+    </div>
+
+</div>
+
+<script type="text/javascript">
+    function search(){
+            if (document.getElementById('search_value').value){
+                location.href='http://'+location.host+'?s='+document.getElementById('search_value').value;
+            }
+            return false;
+        }
+</script>
+
+
+</body>
+</html>
+
+

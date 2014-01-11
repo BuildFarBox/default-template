@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if not has('posts') and has('images') %}
+        {{ redirect('/album') }}
+    {% else %}
+        {% include 'include/posts_list.html' %}
+    {% endif %}
+{% endblock %}
