@@ -72,20 +72,20 @@
                                 <div class="fb-u">
 
                                     <!-- ko if: (model=='text')-->
-                                    <label data-bind="attr:{for: id}, text: title"></label>
+                                    <label data-bind="attr:{for: id}, html: title"></label>
                                     <input data-bind="attr:{id: id, placeholder: default_value }, value:value"
                                            type="text" class="fb_config">
                                     <!-- /ko -->
 
                                     <!-- ko if: model=='select' -->
-                                    <label data-bind="attr:{for: id}, text: title"></label>
+                                    <label data-bind="attr:{for: id}, html: title"></label>
                                     <select data-bind="attr:{id: id}, value: value, options:options, optionsText: 'title', optionsValue: 'value' "
                                             class="fb_config">
                                     </select>
                                     <!-- /ko -->
 
                                     <!-- ko if: model=='textarea' -->
-                                    <label data-bind="attr:{for: id}, text: title"></label>
+                                    <label data-bind="attr:{for: id}, html: title"></label>
                                     <textarea data-bind="attr:{id: id} , value: value, css:{is_list: is_list}"
                                               class="fb_config"></textarea>
                                     <!-- /ko -->
