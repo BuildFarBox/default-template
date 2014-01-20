@@ -31,13 +31,16 @@
         <h1 class="brand-title">{{ site.title }}</h1>
 
         <ul class="nav">
-            {% if has('images') %}
+            {% if site.images_count %}
             <li> <a href="/album">Albums</a></li>
+                {% if not has('posts') %}
+                    {{ redirect('/album') }}
+                {% endif %}
             {% endif %}
             <li>{{ a_with_selected('/category', 'Categories') }}</li>
             <li>{{ a_with_selected('/archive', 'Archive', equal=True) }}</li>
             {% if site.tags %}
-            <li>{{ a_with_selected('/archive?use=tags', 'Tags') }}</li>
+            <li>{{ a_with_selected('/tags', 'Tags') }}</li>
             {% endif %}
             {% if has('about.md') %}
             <li>{{ a_with_selected('/about.md', 'About') }}</li>

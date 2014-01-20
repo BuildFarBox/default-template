@@ -1,16 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
+    {% set is_index = request.path.strip('/')=='album' %}
     <meta charset="utf8"/>
-    <title>{{ folder.title or 'Albums' }}</title>
+    <title>{{ 'Albums' if is_index else folder.title }}</title>
 
     <link rel="stylesheet" href="{{ resource_host }}/lib/pure.css">
     <link rel="stylesheet" href="{{ resource_host }}/site/css/album.css">
     <link rel="stylesheet" href="{{ resource_host }}/css/comment.css?version=1373633982">
+
+    {% if not is_index %}
+        {{ load("font jquery#1.8.1 knockout") }}
+        {{ load('http://maps.google.com/maps/api/js?sensor=true') }}
+        {{ load("{{resource_host}}/lib/gmaps.js {{resource_host}}/site/js/album.js") }}
+    {% endif %}
 </head>
 <body>
 
-    {% if not folder %}
+    {% if is_index %}
         <div class="body_wrap">
 
             <h1>Albums</h1>
@@ -20,7 +27,7 @@
             </div>
 
             <ul class="albums pure-g-r">
-                {% for album in albums %}
+                {% for album in get_data(types='folder', min_images_count=1, level=1, limit=100) %}
                     <li class=" album pure-u-1-3">
                         <a href="/album/{{ album.path }}">
                             <img src="{{ album.url }}?width=120&height=120&fixed=true"/>
@@ -39,6 +46,7 @@
 
     {# album viewer #}
     {% else %}
+            {% set sub_images = get_data(types='folder+image', path=folder.path, min_images_count=1, level=1, limit=60, pager_name='this_album') %}
 
             {{ bread_nav(folder.path, prefix='/album', prefix_name='Albums>', split_by='>') }}
 
@@ -49,8 +57,8 @@
                     </div>
                 </div>
 
-                {% set files = get_data(types='folder+image', path=folder['path'], min_images_count=1, level=1, limit=60) %}
-                {% for file in files %}
+
+                {% for file in sub_images %}
                     <div class="pure-u-1-3 photo-box">
                         <div class="box-container">
                             {% if file.content_type=='folder' %}
@@ -76,7 +84,7 @@
                         </div>
                     </div>
                 {% endfor %}
-
+                {% set paginator=get_paginator('this_album') %}
                 {% include "include/paginator.html" %}
             </div>
 
@@ -98,26 +106,22 @@
                     </div>
 
                     <div class="commands">
-                        <a href="#" data-bind="click: show_full"><i class="icon-resize-full"></i></a>
+                        <a href="#" data-bind="click: show_full"><i class="fa fa-external-link-square"></i></a>
                         <a href="#" data-bind="visible:current_image().exif,click: function(){show_exif(!show_exif())}">
                             EXIF
                         </a>
-                        <a href="#" data-bind="click: function(){show_comments(!show_comments())}">
-                            <i class="icon-comments"></i>
-                            <span data-bind="text: comments_count"></span>条评论
-                        </a>
                         <a href="#" data-bind="click: function(){current_window(null)}">
-                            <i class="icon-remove-circle"></i>关闭
+                            <i class="fa fa-times-circle-o"></i> Close
                         </a>
                     </div>
                 </div>
 
                 <div class="connected">
                     <a href="#" class="pre" data-bind="click: pre, visible: has_pre()">
-                        <i class="icon-arrow-left"></i>
+                        <i class="fa fa-arrow-left"></i>
                     </a>
                     <a href="#" class="next" data-bind="click: next, visible: has_next()">
-                        <i class="icon-arrow-right"></i>
+                        <i class="fa fa-arrow-right"></i>
                     </a>
                 </div>
 
@@ -129,59 +133,18 @@
                     </div>
                 </div>
 
-                <div id="fb-comments-container" data-bind="visible: show_comments()">
-                    <div class="main-container">
-                        <ul id="fb_comments" data-bind="foreach: comments">
-                            <li class="comment">
-                                <div class="avatar">
-                                    <img data-bind="attr: { src: 'http://www.gravatar.com/avatar/'+email_md5 }">
-                                </div>
-                                <div class="c_content">
 
-                                    <div class="author">
-                                        <a data-bind="href: site || '#'">
-                                            <b data-bind="text: author || '匿名'"></b>
-                                        </a>
-                                        <small>2013-05-14 12:33:33</small>
-                                    </div>
-
-                                    <div data-bind="html: content">
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-
-                        <form id="fb_new_comment">
-
-                            <textarea name="content" id="comment-content"></textarea>
-                            <span class="comment_error" data-bind="text: comment_info"></span>
-
-                            <div class="input_body">
-                                <ul>
-                                    <li>
-                                        <label>称呼:</label>
-                                        <input type="text" name="author" id="author">
-                                    </li>
-                                    <li>
-                                        <label>邮箱:</label>
-                                        <input type="text" name="email" id="email">
-                                    </li>
-                                    <li>
-                                        <label>网站:</label>
-                                        <input type="text" name="site" id="site">
-                                    </li>
-                                    <li>
-                                        <input type="submit" value="发表评论" class="c_button"
-                                               data-bind="click:submit_comment"/>
-                                    </li>
-                                </ul>
-                            </div>
-                        </form>
-                    </div>
-                </div>
 
             </div></div>
 
+        </script>
+
+
+
+        <script>
+            var images ={{ files.json }};
+            run_viewer(images);
+            draw_map(images);
         </script>
 
 
@@ -191,29 +154,6 @@
 {%  include 'include/footer.html' %}
 
 
-
-{% if folder %}
-    {# scripts for album #}
-    <link href="{{ resource_host }}/css/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-    <!--[if IE 7]>
-    <link href="{{ resource_host }}/css/font-awesome/css/font-awesome-ie7.min.css" rel="stylesheet" type="text/css" />
-    <![endif]-->
-    <script type="text/javascript" src="http://resource.farbox.com/lib/jquery/1.8.1-jquery.min.js"></script>
-    <script type="text/javascript" src="http://resource.farbox.com/lib/knockout-2.2.1.js"></script>
-
-    <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
-    <script src="{{ resource_host }}/lib/gmaps.js"></script>
-
-    <script src="{{ resource_host }}/site/js/album.js"></script>
-
-    <script>
-        {# make sure the image is not folder #}
-        {% set images = filter_list(files, 'is_image', True) %}
-        var images ={{ jsonify(images) }};
-        run_viewer(images);
-        draw_map(images);
-    </script>
-{% endif %}
 
 
 </body>

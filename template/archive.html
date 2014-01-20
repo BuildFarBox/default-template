@@ -1,11 +1,6 @@
 {% extends 'base.html' %}
 
-{% set total_posts = get_posts(limit=300, sort='desc') %}
-{% if request.args.use == 'tags' %}
-    {% set entries = total_posts.group('tags') %}
-{% else %}
-    {% set entries = total_posts.group('-date:year') %}
-{% endif %}
+{% set entries = get_data(type='post',limit=300, sort='desc').group('-date:year') %}
 
 {% block content %}
 
