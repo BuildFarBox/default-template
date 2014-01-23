@@ -10,9 +10,9 @@
 
     {% for post in posts %}
     <entry>
-        <title>{{ post.title }}</title>
+        <title>{{ post.title.escaped }}</title>
         <link href="http://{{ request.host }}{{ post.url }}" rel="alternate" />
-        <updated>{{ post.date.strftime('%Y-%m-%dT%H:%M:%SZ')}}</updated>
+        <updated>{{ post.date.format('%Y-%m-%dT%H:%M:%SZ')}}</updated>
         <id>{{ post.url_path }}</id>
         <author>
             <name>{{ site.title}}</name>
