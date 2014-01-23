@@ -30,37 +30,8 @@
 
         <h1 class="brand-title">{{ site.title }}</h1>
 
-        <ul class="nav">
-            {% if site.images_count %}
-            <li> <a href="/album">Albums</a></li>
-                {% if not has('posts') %}
-                    {{ redirect('/album') }}
-                {% endif %}
-            {% endif %}
-            <li>{{ a_with_selected('/category', 'Categories') }}</li>
-            <li>{{ a_with_selected('/archive', 'Archive', equal=True) }}</li>
-            {% if site.tags %}
-            <li>{{ a_with_selected('/tags', 'Tags') }}</li>
-            {% endif %}
-            {% if has('about.md') %}
-            <li>{{ a_with_selected('/about.md', 'About') }}</li>
-            {% endif %}
-            <li> <a href="/feed">RSS</a> </li>
-            <li><a href="#" onclick="new_post();return false">Write!</a></li>
-        </ul>
-
-        <ul class="my-socials">
-            {% set socials=['twitter', 'weibo', 'facebook', 'instagram', 'quora', 'github'] %}
-            {% for social in socials %}
-                {% if site.configs.get(social) %}
-            <li >
-                <a href="{{ get_social_url(social, site.configs.get(social)) }}" class="{{ social }}" target="_blank">
-                    <i class="fa fa-{{ social }}"></i>
-                </a>
-            </li>
-                {% endif %}
-            {% endfor %}
-        </ul>
+        {% from "include/macros.html" import blog_sidebar %}
+        {{ blog_sidebar() }}
 
         <div class="search-bar">
             <input type="text" id='search_value' value="{{ request.args.s }}" onkeyup="if (event.keyCode == 13) search();">
