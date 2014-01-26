@@ -19,10 +19,12 @@
                             },
                             {
                                 "key": "avatar",
-                                "title": "Site Avatar URL",
-                                "title_zh_cn": "网站头像地址",
-                                "default_value": "a Image url",
-                                "model": "text"
+                                "title": "Site Avatar (drag image here to replace)",
+                                "title_zh_cn": "网站头像 (拖入图片替换)",
+                                "value": "/_image/avatar.jpg",
+                                "model": "image",
+                                "width": 120,
+                                "height": 120
                             }
                         ]
                     },
@@ -261,6 +263,10 @@
                                     {
                                         "value": "self",
                                         "title": "自定义模板"
+                                    },
+                                    {
+                                        "value": "default",
+                                        "title": "默认模板"
                                     }
                                 ]
                             },

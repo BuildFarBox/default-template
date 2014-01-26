@@ -3,6 +3,7 @@
 <head>
     {{ need_admin() }}
     <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
     <title>{{ site.title }} - Admin</title>
     {{ get_resource('admin.css') }}
 
@@ -65,7 +66,7 @@
         <form class="pure-form pure-form-stacked">
             <div data-bind="foreach: config_pages">
                 <section data-bind="foreach: groups, visible:$index()==$parent.current_config_page()">
-                    <fieldset>
+                    <fieldset date-bind="visible: visible">
                         <legend data-bind="text: title"></legend>
                         <div class="fb-group" data-bind="foreach: cells">
                             <div data-bind="foreach: parts, attr: {class: 'fb-cell fb-u-'+parts_per_line}">
@@ -75,6 +76,12 @@
                                     <label data-bind="attr:{for: id}, html: title"></label>
                                     <input data-bind="attr:{id: id, placeholder: default_value }, value:value"
                                            type="text" class="fb_config">
+                                    <!-- /ko -->
+
+                                    <!-- ko if: (model=='image')-->
+                                    <label data-bind="attr:{for: id}, html: title"></label>
+                                    <img data-bind="attr:{src: value, alt: 'Drag Image Here', style: styles}" class="drag_and_upload">
+                                    <input data-bind="attr:{id: id}, value:raw_value" type="hidden" class="fb_config">
                                     <!-- /ko -->
 
                                     <!-- ko if: model=='select' -->
@@ -127,12 +134,12 @@
                     options:template_chooser.template_packages,
                     optionsText: 'title',
                     optionsValue: 'template_key',
-                    optionsCaption:get_text('Choose Templates...')">
+                    optionsCaption:get_text('Current Status...')">
 
                 </select>
 
                 <span data-bind="if:template_chooser.show_chooser_button">
-                    <button class="pure-button pure-button-primary" data-bind="click:template_chooser.use_this_template,text:get_text('Use this One')"></button>
+                    <button class="pure-button pure-button-primary" data-bind="click:template_chooser.use_this_template,text:get_text('Use This One')"></button>
                 </span>
 
                 <span data-bind="if: template_chooser.this_used_now">
@@ -144,7 +151,7 @@
             </div>
 
 
-            <iframe data-bind="attr:{src:'/?template_key='+template_chooser.current_template_key()}"></iframe>
+            <iframe data-bind="attr:{src: template_chooser.current_iframe_url()}"></iframe>
 
         </div>
 
