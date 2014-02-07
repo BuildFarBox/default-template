@@ -10,7 +10,7 @@
     <link rel='alternate' type='application/rss+xml' title='atom 1.0' href='/feed' />
     <title>{% block title %}{{ request.args.s or site.title }} {% endblock %}</title>
 
-    {{ load('fonts {{resource_host}}/lib/pure.css {{resource_host}}/site/css/blog.css') }}
+    {{ load('fonts pure /template/css/blog.scss') }}
 
 
     {% block head %}
@@ -30,8 +30,8 @@
 
         <h1 class="brand-title">{{ site.title }}</h1>
 
-        {% from "include/macros.html" import blog_sidebar %}
-        {{ blog_sidebar() }}
+        {% from "include/macros.html" import cache_blog_sidebar %}
+        {{ cache_blog_sidebar() }}
 
         <div class="search-bar">
             <input type="text" id='search_value' value="{{ request.args.s }}" onkeyup="if (event.keyCode == 13) search();">
