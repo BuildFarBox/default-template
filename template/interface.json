@@ -249,6 +249,10 @@
                                     {
                                         "value": "self",
                                         "title": "Custom Template"
+                                    },
+                                    {
+                                        "value": "default",
+                                        "title": "Default Template"
                                     }
                                 ],
                                 "options_zh_cn": [
@@ -272,8 +276,8 @@
                             },
                             {
                                 "key": "template_inherit",
-                                "title": "Template Inherit",
-                                "title_zh_cn": "模板继承",
+                                "title": "Base Template Inherit",
+                                "title_zh_cn": "基础模板继承",
                                 "model": "select",
                                 "default_value": "yes",
                                 "options": [

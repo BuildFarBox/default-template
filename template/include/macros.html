@@ -1,4 +1,4 @@
-{% macro blog_sidebar() %}
+{% macro cache_blog_sidebar() %}
     <ul class="nav">
         {% if site.images_count %}
             <li>
@@ -11,7 +11,9 @@
         {% if has('categories') %}
             <li>{{ a_with_selected('/category', 'Categories') }}</li>
         {% endif %}
-            <li>{{ a_with_selected('/archive', 'Archive', equal=True) }}</li>
+        {% if has('posts') %}
+            <li>{{ a_with_selected('/archive', 'Archive') }}</li>
+        {% endif %}
         {% if site.tags %}
             <li>{{ a_with_selected('/tags', 'Tags') }}</li>
         {% endif %}

@@ -1,5 +1,5 @@
 <div id="fb_comments_container">
-{% if not site.configs.scripts_per_page and not site.configs.scripts_for_doc  %}
+{% if not site.configs.scripts_per_page and not site.configs.scripts_for_doc and not site.comment_script  %}
     <ul id="fb_comments">
         {% for comment in comments %}
             <li class="comment">
@@ -86,9 +86,10 @@
 
     {% endif %}
 
+{% elif site.comment_script %}
+    {{ site.comment_script }}
 {% else %}
-<div id="disqus_thread"></div>
-
+<!--scripts_for_doc-->
 {% endif %}
 </div>
 
