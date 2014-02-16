@@ -32,10 +32,15 @@ Viewer = (images) ->
             return exif_list
         return []
 
-    @next = => self.current_index(@current_index()+1) if @has_next()
+    @next = =>
+        if @has_next()
+            self.current_index(@current_index()+1)
+            $('.image img').removeClass('loaded')
 
-    @pre = => self.current_index(@current_index()-1) if @has_pre()
-
+    @pre = =>
+        if @has_pre()
+            self.current_index(@current_index()-1)
+            $('.image img').removeClass('loaded')
 
     @show_exif = ko.observable(false)
 

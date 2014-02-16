@@ -300,6 +300,33 @@
                                         "title": "不继承"
                                     }
                                 ]
+                            },
+                            {
+                                "key": "template_clone_allowed",
+                                "title": "Allow Template Clone",
+                                "title_zh_cn": "允许模板克隆",
+                                "model": "select",
+                                "default_value": "yes",
+                                "options": [
+                                    {
+                                        "value": "yes",
+                                        "title": "Allow Others Clone Template!"
+                                    },
+                                    {
+                                        "value": "no",
+                                        "title": "No Allowed"
+                                    }
+                                ],
+                                "options_zh_cn": [
+                                    {
+                                        "value": "yes",
+                                        "title": "允许别人克隆模板"
+                                    },
+                                    {
+                                        "value": "no",
+                                        "title": "不允许"
+                                    }
+                                ]
                             }
 
                         ]
@@ -344,20 +371,19 @@
                         "parts_per_line": 1,
                         "parts":[
                             {
-                                "key": "live",
-                                "title": "Make my site auto reload & preview in realtime (in next 10 minutes).",
-                                "title_zh_cn": "让我的网站保持实时更新预览（有效时间为10分钟）",
-                                "model":"check",
-                                "default_value": "no"
-                            },
-                            {
                                 "key": "no_editor",
                                 "title": "Disable the Editor which one make you write directly on the Web Page",
                                 "title_zh_cn": "禁用`可直接在页面中书写的编辑器`",
                                 "model":"check",
                                 "default_value": "no"
+                            },
+                            {
+                                "key": "connect_to_dropbox",
+                                "title": "Keeping sync with Dropbox in realtime",
+                                "title_zh_cn": "与Dropbox保持实时同步",
+                                "model":"check",
+                                "default_value": "yes"
                             }
-
                         ]
                     }
                 ]

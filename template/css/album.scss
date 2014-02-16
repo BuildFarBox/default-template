@@ -2,7 +2,6 @@ $img-width: 320px;
 $img-height: 214px;
 $content-high-color: #099;
 
-
 body {
     -webkit-text-size-adjust:none;
     background-color:#fefdfa;
@@ -310,13 +309,28 @@ body {
             position: relative;
             z-index: 999;
             cursor: pointer;
+            background: url(loading.gif) center center no-repeat;
+
 
             img {
                 display: block;
                 margin: 0 auto;
                 max-width: 100%;
                 max-height: 100%;
+                min-height: 100px;
+
             }
+
+            img, .loaded {
+              -webkit-transition: opacity 0.3s;
+              -moz-transition: opacity 0.3s;
+              -ms-transition: opacity 0.3s;
+              -o-transition: opacity 0.3s;
+              transition: opacity 0.3s;
+              opacity: 0;
+            }
+
+            .loaded { opacity: 1; }
         }
 
 

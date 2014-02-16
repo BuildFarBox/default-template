@@ -77,12 +77,14 @@
     });
     this.next = function() {
       if (_this.has_next()) {
-        return self.current_index(_this.current_index() + 1);
+        self.current_index(_this.current_index() + 1);
+        return $('.image img').removeClass('loaded');
       }
     };
     this.pre = function() {
       if (_this.has_pre()) {
-        return self.current_index(_this.current_index() - 1);
+        self.current_index(_this.current_index() - 1);
+        return $('.image img').removeClass('loaded');
       }
     };
     this.show_exif = ko.observable(false);

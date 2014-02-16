@@ -6,8 +6,8 @@
 {% block content %}
 
 <div class="detail-post">
-    <div class="post">
-        <h2 class="title"><a href="{{post.url}}">{{ post.title }}</a></h2>
+    <div class="post embed_editor_container">
+        <h2 class="title embed_editor_title"><a href="{{post.url}}">{{ post.title }}</a></h2>
 
         <div class="post_body">
             {{ post.content.editable }}
@@ -42,7 +42,7 @@
 
 
 	    </div>
-
+    </div>
 
 
     {% include 'include/comments.html' %}

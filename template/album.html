@@ -126,7 +126,7 @@
                 <div class="body">
                     <div class="image" >
                         <div data-bind="click: next">
-                            <img data-bind="attr: {src: current_image().url, alt: current_image().title}"/>
+                            <img data-bind="attr: {src: current_image().url, alt: current_image().title}" onload="$(this).addClass('loaded')"/>
                         </div>
                     </div>
                 </div>
