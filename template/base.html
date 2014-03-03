@@ -30,8 +30,8 @@
 
         <h1 class="brand-title">{{ site.title }}</h1>
 
-        {% from "include/macros.html" import cache_blog_sidebar %}
-        {{ cache_blog_sidebar() }}
+        {% from "include/macros.html" import blog_sidebar %}
+        {{ blog_sidebar() }}
 
         <div class="search-bar">
             <input type="text" id='search_value' value="{{ request.args.s }}" onkeyup="if (event.keyCode == 13) search();">
@@ -57,12 +57,9 @@
                 {% else %}
                     <a href="#" onclick="login('/admin')" class="admin">Admin</a>
                 {% endif %}
-                <a href="/?action=import" target="_blank">Move from WordPress</a>
                 <span>©2012-2015 Z.R.E.Y Inc.</span>
             </div>
         </div>
-
-        <script type="text/javascript" src="{{ resource_host }}/site/js/basic.js"></script>
 
     </div>
 

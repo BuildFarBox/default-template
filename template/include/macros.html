@@ -1,6 +1,6 @@
-{% macro cache_blog_sidebar() %}
+{% macro blog_sidebar() %}
     <ul class="nav">
-        {% if site.images_count %}
+        {% if has("images") %}
             <li>
                 <a href="/album">Albums</a>
             </li>
@@ -22,7 +22,6 @@
         {% endif %}
 
         <li> <a href="/feed">RSS</a> </li>
-        <li><a href="#" onclick="new_post();return false">Write!</a></li>
     </ul>
 
     <ul class="my-socials">

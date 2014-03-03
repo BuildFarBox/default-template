@@ -38,6 +38,7 @@
       });
     });
     this.current_index = ko.observable();
+    this.has_exif = ko.observable(false);
     this.current_image = ko.computed(function() {
       if (_this.current_index() != null) {
         location.hash = _this.image_paths[_this.current_index()];
@@ -60,6 +61,7 @@
         'focal_length': 'Focal',
         'iso': 'ISO'
       };
+      _this.has_exif(false);
       exif_list = [];
       if (_this.current_image() && _this.current_image().exif) {
         exif = _this.current_image().exif;
@@ -70,6 +72,7 @@
               v: exif[info_name]
             });
           }
+          _this.has_exif(true);
         }
         return exif_list;
       }

@@ -371,13 +371,6 @@
                         "parts_per_line": 1,
                         "parts":[
                             {
-                                "key": "no_editor",
-                                "title": "Disable the Editor which one make you write directly on the Web Page",
-                                "title_zh_cn": "禁用`可直接在页面中书写的编辑器`",
-                                "model":"check",
-                                "default_value": "no"
-                            },
-                            {
                                 "key": "connect_to_dropbox",
                                 "title": "Keeping sync with Dropbox in realtime",
                                 "title_zh_cn": "与Dropbox保持实时同步",

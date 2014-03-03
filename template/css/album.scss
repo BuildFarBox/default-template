@@ -183,15 +183,27 @@ body {
                 position: relative;
                 margin-top: 10px;
                 border-top: 1px solid #e6e6e6;
-                padding: 10px 10px 0 10px;
+                padding: 10px 0 0 0;
                 height: 30px;
                 line-height: 30px;
+
+                b{
+                    padding: 0 10px;
+                    width: 80%;
+                    overflow: hidden;
+                    font-size: 1em;
+                    position: absolute;
+                    top: 10px;
+                    left: 0;
+                }
 
                 .image-date{
                     font-family: Geneva;
                     position: absolute;
-                    right: 5px;
-                    bottom: 5px;
+                    background: #fefdfa;
+                    right: 0;
+                    bottom: 0;
+                    padding: 0 5px;
                     color: #cccccc;
                     font-size: 10px;
                 }

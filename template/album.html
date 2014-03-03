@@ -105,7 +105,7 @@
 
                     <div class="commands">
                         <a href="#" data-bind="click: show_full"><i class="fa fa-external-link-square"></i></a>
-                        <a href="#" data-bind="visible:current_image().exif,click: function(){show_exif(!show_exif())}">
+                        <a href="#" data-bind="visible:has_exif(),click: function(){show_exif(!show_exif())}">
                             EXIF
                         </a>
                         <a href="#" data-bind="click: function(){current_window(null)}">

@@ -14,6 +14,7 @@ Viewer = (images) ->
     @current_window = ko.observable()
     @current_window.subscribe (show_window) => $(document.body).css {'overflow': if show_window then 'hidden' else 'auto'}
     @current_index = ko.observable()
+    @has_exif = ko.observable(false)
     @current_image = ko.computed =>
         if @current_index()?
             location.hash = @image_paths[@current_index()]
@@ -24,11 +25,13 @@ Viewer = (images) ->
 
     @exif_list = ko.computed =>
         fields = {'model': 'Model', 'fn': 'Fn', 'exposure': 'Exposure', 'focal_length': 'Focal', 'iso': 'ISO'}
+        @has_exif(false)
         exif_list = []
         if @current_image() and @current_image().exif
             exif = @current_image().exif
             for info_name of exif
                 exif_list.push(k:fields[info_name], v:exif[info_name]) if info_name of fields
+                @has_exif(true)
             return exif_list
         return []
 
