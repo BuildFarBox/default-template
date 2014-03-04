@@ -236,8 +236,12 @@
                                 "title": "Template Priority",
                                 "title_zh_cn": "模板优先级",
                                 "model": "select",
-                                "default_value": "package",
+                                "default_value": "auto",
                                 "options": [
+                                    {
+                                        "value": "auto",
+                                        "title": "Auto"
+                                    },
                                     {
                                         "value": "package",
                                         "title": "Template Package"
@@ -256,6 +260,10 @@
                                     }
                                 ],
                                 "options_zh_cn": [
+                                    {
+                                        "value": "auto",
+                                        "title": "自动"
+                                    },
                                     {
                                         "value": "package",
                                         "title": "模板包"
