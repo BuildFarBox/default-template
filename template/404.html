@@ -1,57 +1,100 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<!doctype html>
+<html>
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width">
     <title>HTTP 404</title>
 </head>
 <body>
+<style type="text/css">
+    * {
+        margin: 0;
+        padding: 0;
+    }
 
+    html, body {
+        width: 100%;
+        height: 100%;
+        font: 200 25px/1.5 Helvetica Neue, Helvetica, Sans-Serif;
+        -webkit-font-smoothing: antialiased;
+        position: relative;
+    }
 
-<div id="content">
-        <div id="error">
-        <h1>
-            这个页面不存在。
-        </h1>
-        <div class="content">
+    h1 {
+        font-size: 30px;
+        font-weight: 400;
+        margin: 0 0 10px;
+        color: #555;
+    }
 
-            {%  if error %}
-                {{ error }}
-                <hr/>
-            {% endif %}
+    p, a {
+        color: #999;
+        text-decoration: none;
+    }
 
-            <p>
-                你所访问的页面、文件并不存在，可能已经被删除了，或者地址错了？
-            </p>
+    p {
+        margin-left: 100px;;
+        font-size: 0.8em;
+        margin-top: 1.0em;
+    }
 
-            <p>
-                The page (or file) you visited, had gone. May be deleted or just a error url?
-            </p>
+    a:hover {
+        color: #5ba2ee;
+    }
 
-        </div>
-    </div>
+    .center {
+        margin: 0 0 0 100px;
+        position: relative;
+        top: 45%;
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+
+    .back {
+        position: fixed;
+        right: 15px;
+        bottom: 10px;
+        font-size: 0.7em;
+
+    }
+
+    .back a {
+        color: #acacac;
+    }
+
+    @media only screen and (max-width: 320px) {
+        body {
+            padding: 30px;
+        }
+
+        .center {
+            margin-left: 0;
+        }
+    }
+
+</style>
+
+<div class="center">
+    <h1>
+        <a href="/">Page Not Found.</a>
+    </h1>
+
+    <p>
+        <a href="http://doc.farbox.com/read/how-to-make-a-template#item-1-6" target="_blank">
+            <small>&gt;</small>
+            custom this page by '/template/404.html'
+        </a>
+    </p>
+
 </div>
 
-
-<script type="text/javascript">
-
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-36651986-3']);
-    _gaq.push(['_setDomainName', 'farbox.com']);
-    _gaq.push(['_setAllowLinker', true]);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-
-    var info = 'page:' + document.location.host +document.location.pathname + document.location.search + ' ref:' + document.referrer;
-    _gaq.push(['_trackEvent', 'Error', '{{ code }}' ,info]);
-</script>
-
+<p class="back">
+    <small>back to</small>
+    <a href="/">Home</a>
+</p>
 
 </body>
 </html>
-
-
