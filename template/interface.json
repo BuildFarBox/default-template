@@ -175,48 +175,6 @@
                     }
                 ]
 
-            },
-            {
-                "title":"Social Info",
-                "title_zh_cn":"社交信息",
-                "cells":[
-                    {
-                        "parts_per_line": 3,
-                        "parts":[
-                            {
-                                "key": "twitter",
-                                "title": "Twitter",
-                                "default_value": "Twitter ID"
-                            },
-                            {
-                                "key": "weibo",
-                                "title": "Weibo",
-                                "title_zh_cn": "微博",
-                                "default_value": "Weibo ID"
-                            },
-                            {
-                                "key": "facebook",
-                                "title": "Facebook",
-                                "default_value": "Facebook ID"
-                            },
-                            {
-                                "key": "instagram",
-                                "title": "Instagram",
-                                "default_value": "Instagram Username"
-                            },
-                            {
-                                "key": "quora",
-                                "title": "Quora",
-                                 "default_value": "Quora Username"
-                            },
-                            {
-                                "key": "github",
-                                "title": "Github",
-                                "default_value": "Github ID"
-                            }
-                        ]
-                    }
-                ]
             }
         ]
     },

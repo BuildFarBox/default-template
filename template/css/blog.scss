@@ -110,69 +110,6 @@ a {
         }
     }
 
-    .my-socials {
-        display: inline-block;
-        list-style: none;
-        margin: 20px 0 0 0;
-        padding: 20px;
-
-        li {
-            float: left;
-            width: $social-button-size;
-            margin: 10px;
-
-            .weibo {
-                background-color: #945c5b;
-            }
-            .tumblr {
-                background-color: #365471;
-            }
-            .linked-in {
-                background-color: #2086bc;;
-            }
-            .twitter {
-                background-color: #00b6f3;
-            }
-            .quora {
-                background-color: #c21d11;
-            }
-            .pinterest {
-                background-color: #cb2027;
-            }
-            .google-plus {
-                background-color: #cf4231;
-            }
-            .flickr {
-                background-color: #ff0084;
-            }
-            .instagram {
-                background-color: #723f2d;
-            }
-            .github {
-                background-color: #333333;
-            }
-            a {
-                background: indianred;
-                text-decoration: none;
-                display: block;
-                text-align: center;
-                width: $social-button-size;
-                height: $social-button-size;
-                border-radius: $social-button-size;
-                color: #fff;
-
-                &:hover {
-                    color: #fff;
-                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-                }
-                i {
-                    font-size: $social-button-size/2;
-                    line-height: $social-button-size;
-                }
-            }
-        }
-    }
-
     .search-bar{
         position: absolute;
         bottom: 10px;
