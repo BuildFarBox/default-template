@@ -25,7 +25,7 @@
 {% else %}
 
 
-{% if not site.configs.scripts_per_page and not site.configs.scripts_for_doc and not site.comment_script  %}
+{% if not site.configs.scripts_for_doc and not site.comment_script  %}
     <link rel="stylesheet" href="{{ resource_host }}/css/comment.css?version={{ resource_version }}">
     <ul id="fb_comments">
         {% for comment in comments %}
