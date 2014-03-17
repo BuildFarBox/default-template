@@ -1,0 +1,20 @@
+extends base
+block title
+	if request.path.strip('/') == 'category'
+		| Categories
+	elif request.path.startswith('/category')
+		| {{ category.title }}
+	elif request.path.startswith('/tag')
+		| {{ tags.join('+') }}
+	else
+		| {{ request.args.s or site.title }}
+block content
+	if request.path.strip('/') == 'category'
+		ul.categories#categories
+			for category in  get_data(type='folder', level=[1,2], min_posts_count=1)
+				li
+					a(href="/category/{{ category.path }}")
+						h3= category.title
+						span {{ category.posts_count }} posts
+	else
+		include include/posts_list

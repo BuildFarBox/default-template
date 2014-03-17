@@ -1,0 +1,59 @@
+html
+	head
+		meta(content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0", name="viewport")
+		meta(content="yes", name="apple-mobile-web-app-capable")
+		meta(content="black", name="apple-mobile-web-app-status-bar-style")
+		meta(content="telephone=no", name="format-detection")
+		meta(name="renderer", content="webkit")
+		title
+			block title
+				| {{ request.args.s or site.title }}
+		load('fonts pure /template/css/blog.scss')
+	body
+		#layout.pure-g-r
+			.sidebar.pure-u
+				#avatar
+					a(href="/")
+						img.logo(src="{{ site.avatar }}?width=80&height=80&fixed=true", alt="site.title")
+				h1.site_title= site.title
+
+				ul.nav
+					if has('images')
+						li
+							a(href='/album') Albums
+						if not has('posts')
+							redirect('/album')
+					if has('categories')
+						li
+							+a_with_selected('/category', 'Categories')
+					if has('posts')
+						li
+							+a_with_selected('/archive', 'Archive')
+					if site.tags
+						li
+							+a_with_selected('/tags', 'Tags')
+					if has('about.md')
+						li
+							+a_with_selected('/about.md', 'About')
+					li
+						a(href="/feed") RSS
+
+				.search_bar
+					input#search_value(type="text", value=request.args.s, onkeyup="if (event.keyCode == 13) search();")
+					a(href="javascript:search()")
+						i.fa.fa-search
+			.pure-u-1
+				#main
+					block content
+				#footer
+					.powered_by
+						a(href="https://www.farbox.com", target="_blank") Powered By FarBox.com
+						a(href="/admin") Admin
+						span ©2012-2015 Z.R.E.Y Inc.
+			script(type="text/javascript")
+				function search(){
+					if (document.getElementById('search_value').value){
+							location.href='http://'+location.host+'?s='+document.getElementById('search_value').value;
+						}
+						return false;
+					}

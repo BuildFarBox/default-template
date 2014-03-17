@@ -1,7 +1,6 @@
 $social-button-size: 50px;
 $nav-button-size: 50px;
 $content-high-color: #099;
-$bg-color: #fff;
 $font-color: #333;
 
 .default-transition {
@@ -13,10 +12,12 @@ $font-color: #333;
 
 
 body {
-    font-family: 'Helvetica Neue',Arial,"Hiragino Sans GB",sans-serif;
+    font-family: serif;
+    color: #444;
+    background: #fdfdfd;
     -webkit-text-size-adjust: none;
-    background: $bg-color;
-    color: $font-color;
+
+
 }
 
 b, strong{
@@ -51,7 +52,6 @@ a {
     bottom: 0;
     width: 25%;
     margin-left: -25%;
-    background: darken($bg-color, 3%);
     border-right: 1px solid #eee;
     text-align: center;
     overflow: hidden;
@@ -62,7 +62,11 @@ a {
         width: 120px;
         height: 120px;
         border-radius: 50%;
-        border: 5px solid $bg-color;
+        border: 5px solid #f4f4f4;
+
+        &:hover{
+            border-color: darken(#f4f4f4, 10%)
+        }
 
         img.logo {
             position: absolute;
@@ -78,8 +82,8 @@ a {
 
     h1 {
         margin: 0 1em;
-
         text-align: center;
+        line-height: 1.2em;
         text-transform: uppercase;
     }
 
@@ -98,8 +102,8 @@ a {
                 font-size: 12px;
                 font-family: Arial;
                 color: #666;
-                padding: 3px 5px;
-                background: #ddd;
+                padding: 3px 7px;
+                background: #efefef;
 
                 &:hover, &.selected{
                     text-decoration: none;
@@ -110,7 +114,7 @@ a {
         }
     }
 
-    .search-bar{
+    .search_bar{
         position: absolute;
         bottom: 10px;
         width: 100%;
@@ -159,6 +163,7 @@ a {
             font-weight: bold;
             line-height: 2.2em;
             font-size: 1.4em;
+            color: #555;
             text-align: center;
             border-bottom: 1px solid #ddd;
         }
@@ -168,13 +173,23 @@ a {
             padding: 0;
 
             li {
-                line-height: 2.9em;
+                line-height: 3.2em;
                 border-bottom: 1px solid #ddd;
                 position: relative;
                 padding: 0 5px;
                 text-align: left;
                 font-weight: normal;
                 *font-size: 16px;
+
+                a{
+                    color: #555;
+                    text-decoration: none;
+                    @extend .default-transition;
+
+                    &:hover{
+                        color: $content-high-color;
+                    }
+                }
             }
         }
 
@@ -187,26 +202,41 @@ a {
         }
     }
 
-    .posts, .detail-post {
+    .posts, .detail_post {
         margin: 45px auto;
     }
 
-    .detail-post .post{
+    .detail_post .post{
         margin-bottom: 3em;
     }
 
-
     .post {
         line-height: 1.9;
+        margin-bottom: 8em;
+        font-size: 16px;
 
-        margin-bottom: 6em;
-
-        font-size: 14px;
-        @media screen and (min-width: 480px) {
-            font-size: 16px;
-            .title {
-                font-size: 2em;
+        .title {
+            font-size: 2.2em;
+            line-height: 1.2em;
+            padding: 0.5em 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 1.5em;
+            a{
+                color: #222;
+                text-decoration: none;
+                @extend .default-transition;
+                &:hover{
+                    color: $content-high-color;
+                }
             }
+        }
+
+        @media screen and (max-width: 480px) {
+            .title{
+                font-size: 1.8em;
+            }
+
         }
 
         p{
@@ -302,27 +332,30 @@ a {
     /* for categories*/
 
     #categories{
-        list-style-type: none;
-        display:inline-block;
-        zoom:1;
-        *display:inline;
+        list-style:none;
+        display:block;
+        text-align:center;
+
         clear: both;
         padding: 0;
         margin-top: 50px;
 
         a{
             text-decoration: none;
-
         }
 
         li{
-            float: left;
+            font-size:16px;
+            vertical-align:top;
+            display:inline-block;
+            *display:inline;
+
+            text-align:left;
+
             position: relative;
 
-
-
             h3{
-                font-size: 1.3em;
+                font-size: 1.2em;
                 word-wrap:break-word;
                 overflow:hidden;
                 font-weight: normal;
@@ -510,6 +543,8 @@ hr {
 
             text-align: center;
             border: 1px solid #d3d3d3;
+
+            @extend .default-transition;
 
             &:hover {
                 color: #fff;
@@ -707,11 +742,11 @@ hr {
 
 h1, h2, h3{
     font-weight: normal;
-    color: #222222;
+    color: #333;
 }
 
 h4{
-    color: #222;
+    color: #333;
 }
 
 h1{

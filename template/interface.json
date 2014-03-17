@@ -226,14 +226,6 @@
                                         "title": "Auto"
                                     },
                                     {
-                                        "value": "package",
-                                        "title": "Template Package"
-                                    },
-                                    {
-                                        "value": "clone",
-                                        "title": "Cloned Template"
-                                    },
-                                    {
                                         "value": "self",
                                         "title": "Custom Template"
                                     },
@@ -246,14 +238,6 @@
                                     {
                                         "value": "auto",
                                         "title": "自动"
-                                    },
-                                    {
-                                        "value": "package",
-                                        "title": "模板包"
-                                    },
-                                    {
-                                        "value": "clone",
-                                        "title": "克隆的模板"
                                     },
                                     {
                                         "value": "self",
