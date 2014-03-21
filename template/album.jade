@@ -1,7 +1,10 @@
 html
 	is_index = request.path.strip('/')=='album' or request.path.startswith('/album/page')
 	head
-		title= 'Albums' if is_index else folder.title
+		if is_index
+			title= 'Albums'
+		else
+			title= folder.title or site.title
 		load("pure /template/css/album.scss")
 		if not is_index
 			load("fonts jquery#1.8.1 knockout")
@@ -32,10 +35,10 @@ html
 		else
 			//for album viewer
 			if request.path.startswith('/album/~root')
-				sub_images = get_data(types='image', min_images_count=1, level=1, limit=60, pager_name='this_album')
+				sub_images = get_data(types='image', min_images_count=1, level=1, limit=60, pager_name='this_album', sort='asc')
 				+bread_nav('/~root', prefix='/album', prefix_name='Albums>', split_by='>')
 			else
-				sub_images = get_data(types='folder+image', path=folder.path, min_images_count=1, level=1, limit=60, pager_name='this_album')
+				sub_images = get_data(types='folder+image', path=folder.path, min_images_count=1, level=1, limit=60, pager_name='this_album', sort='asc')
 				+bread_nav(folder.path, prefix='/album', prefix_name='Albums>', split_by='>')
 
 			.boxes.pure-g-r

@@ -31,21 +31,21 @@
 								small= comment.date
 							.comment_content= comment.content
 			form#fb_new_comment(method="post", action="#fb_new_comment")
-				textarea(name="content")= comment_content
-				if error
-					span.comment_error= error
+				textarea(name="content")= raw_comment.content
+				if raw_comment.error
+					span.comment_error= raw_comment.error
 				.input_body
 					ul
 						if not request.is_login
 							li
 								label Name:
-								input(type="text", name="author")
+								input(type="text", name="author", value=raw_comment.author)
 							li
 								label Email:
-								input(type="text", name="email")
+								input(type="text", name="email", value=raw_comment.email)
 							li
 								label Site:
-								input(type="text", name="site")
+								input(type="text", name="site", value=raw_comment.site)
 						li
 							input#c_submit(type="submit", value="Comment", class="c_button")
 		elif site.comment_script

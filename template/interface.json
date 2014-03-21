@@ -339,24 +339,6 @@
         "title_zh_cn": "高级",
         "groups":[
             {
-                "title": "Feature",
-                "title_zh_cn": "功能",
-                "cells":[
-                    {
-                        "parts_per_line": 1,
-                        "parts":[
-                            {
-                                "key": "connect_to_dropbox",
-                                "title": "Keeping sync with Dropbox in realtime",
-                                "title_zh_cn": "与Dropbox保持实时同步",
-                                "model":"check",
-                                "default_value": "yes"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
                 "title": "Data",
                 "title_zh_cn": "数据",
                 "cells":[
@@ -438,12 +420,6 @@
                                 "title_zh_cn": "访客须输入用户名、密码才能访问，格式为'username@password', 每行一条记录 ",
                                 "model":"textarea",
                                 "is_list": true
-                            },
-                            {
-                                "key": "password_keep_long",
-                                "title": "Remember the status of visitor's login for 180 days.",
-                                "title_zh_cn":"记住访客的登录状态，最长180天。",
-                                "model": "check"
                             }
                         ]
                     }
