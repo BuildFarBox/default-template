@@ -339,6 +339,24 @@
         "title_zh_cn": "高级",
         "groups":[
             {
+                "title": "Feature",
+                "title_zh_cn": "功能",
+                "cells":[
+                    {
+                        "parts_per_line": 1,
+                        "parts":[
+                            {
+                                "key": "nano",
+                                "title": "<small>beta</small> Join Nano Network, Make Web Fast. <a href='http://status.farbox.org/service/nano-network' target=_blank> status </a>",
+                                "title_zh_cn": "<small>beta</small> 加入Nano Network, 加速你的网站. <a href='http://status.farbox.org/service/nano-network' target=_blank> status </a>",
+                                "model":"check",
+                                "default_value": "no"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
                 "title": "Data",
                 "title_zh_cn": "数据",
                 "cells":[
