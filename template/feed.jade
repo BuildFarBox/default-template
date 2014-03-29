@@ -9,9 +9,13 @@ feed(xmlns="http://www.w3.org/2005/Atom")
 		updated= posts[0]['date'].strftime('%Y-%m-%dT%H:%M:%SZ')
 	for post in posts
 		entry
+			if site.configs.post_url_format == 'no_prefix'
+				post_url = 'http://' + request.host + '/' + post.url_path
+			else
+				post_url = 'http://' + request.host + post.url
 			title= post.title.escaped
-			link(href="http://{{ request.host }}{{ post.url }}", rel="alternate")
-			updated= post.date.format('%Y-%m-%dT%H:%M:%SZ')
+			link(href=post_url, rel="alternate")
+			updated= post.date.strftime('%Y-%m-%dT%H:%M:%SZ')
 			id= post.url_path
 			author
 				name= site.configs.author or site.title
