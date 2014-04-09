@@ -8,7 +8,7 @@
                 "title_zh_cn": "网站信息",
                 "cells": [
                     {
-                        "parts_per_line": 2,
+                        "parts_per_line": 3,
                         "parts": [
                             {
                                 "key": "title",
@@ -16,6 +16,12 @@
                                 "title_zh_cn": "网站标题",
                                 "default_value": "My Site",
                                 "model": "text"
+                            },
+                            {
+                                "title": "Site Keywords",
+                                "title_zh_cn": "网站关键词",
+                                "key": "keywords",
+                                "model":"text"
                             },
                             {
                                 "key": "avatar",
