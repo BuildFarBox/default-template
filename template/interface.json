@@ -317,6 +317,49 @@
                                         "title": "不允许"
                                     }
                                 ]
+                            },
+                            {
+                                "key": "autoreload",
+                                "title": "AutoReload",
+                                "title_zh_cn": "AutoReload",
+                                "model": "select",
+                                "default_value": "auto",
+                                "options": [
+                                    {
+                                        "value": "auto",
+                                        "title": "Auto"
+                                    },
+                                    {
+                                        "value": "admin",
+                                        "title": "For Yourself Only"
+                                    },
+                                    {
+                                        "value": "yes",
+                                        "title": "For Everyone"
+                                    },
+                                    {
+                                        "value": "no",
+                                        "title": "Not Allowed"
+                                    }
+                                ],
+                                "options_zh_cn": [
+                                    {
+                                        "value": "auto",
+                                        "title": "自动"
+                                    },
+                                    {
+                                        "value": "admin",
+                                        "title": "仅自己"
+                                    },
+                                    {
+                                        "value": "yes",
+                                        "title": "每个访客都有效"
+                                    },
+                                    {
+                                        "value": "no",
+                                        "title": "不允许"
+                                    }
+                                ]
                             }
 
                         ]
