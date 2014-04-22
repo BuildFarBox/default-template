@@ -41,13 +41,29 @@ update_css = (path)->
 if WebSocket? and JSON?
     if document.location.protocol == 'https:' then ws_protocl='wss:' else ws_protocl='ws:'
     ws_url = ws_protocl+'realtime.farbox.com/notes'
-    socket = new WebSocket(ws_url)
-    path_blocks = {}
-    socket.onmessage = (message)->
-        note = JSON.parse(message.data)
-        if path_blocks[note.path]
-            return false
-        else
-            path_blocks[note.path] = true # block it, avoid the same path events conflicts
-            update_change(note.path)
-            path_blocks[note.path] = false # release the block
+    socket = null
+    connect_to_farbox = =>
+        socket = new WebSocket(ws_url)
+        connectted_at = new Date()
+        path_blocks = {}
+        socket.onmessage = (message)->
+            note = JSON.parse(message.data)
+            if path_blocks[note.path]
+                return false
+            else
+                path_blocks[note.path] = true # block it, avoid the same path events conflicts
+                if note.doc_type == 'template'
+                    update_change(note.path)
+                path_blocks[note.path] = false # release the block
+        socket.onclose = ->
+            if (new Date() - connectted_at)/1000 > 10
+                connect_to_farbox() #reconnect
+        socket.onerror =->
+            if (new Date() - connectted_at)/1000 > 10
+                connect_to_farbox()
+    keep_live = =>
+        if socket
+            socket.send('ping')
+    # first time call
+    connect_to_farbox()
+    setInterval(keep_live, 30000)
