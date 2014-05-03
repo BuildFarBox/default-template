@@ -38,12 +38,19 @@
                     {
                         "parts_per_line": 1,
                         "parts":[
-
                             {
                                 "title": "Site Description",
                                 "title_zh_cn": "网站描述",
                                 "key": "raw_content",
                                 "model":"textarea"
+                            },
+                            {
+                                "title": "Site's Cover (drag image here to replace)",
+                                "title_zh_cn": "网站封面 (拖入图片替换)",
+                                "key": "cover",
+                                "model":"image",
+                                "value": "/_image/cover.jpg",
+                                "height": 120
                             }
                         ]
                     }
@@ -400,6 +407,18 @@
                 "title": "Feature",
                 "title_zh_cn": "功能",
                 "cells":[
+                    {
+                        "parts_per_line": 1,
+                        "parts":[
+                            {
+                                "key": "auto_image",
+                                "title": "<small>beta</small> Make Images Vivider Automatically. <a href='http://demo-for.farbox.com/post/amazing-images-demo' target=_blank> demo </a>",
+                                "title_zh_cn": "<small>beta</small> 自动美化照片. <a href='http://demo-for.farbox.com/post/amazing-images-demo' target=_blank> demo </a>",
+                                "model":"check",
+                                "default_value": "no"
+                            }
+                        ]
+                    },
                     {
                         "parts_per_line": 1,
                         "parts":[
