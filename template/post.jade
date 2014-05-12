@@ -24,8 +24,8 @@ block content
 
 				.other_posts
 					if pre_one
-						a.pre(href=pre_one.url) &lt; {{ pre_one.title }}
+						a.pre(href='{{pre_one.url}}#main') &lt; {{ pre_one.title }}
 					if next_one
-						a.next(href=next_one.url) {{ next_one.title }} &gt;
+						a.next(href='{{next_one.url}}#main') {{ next_one.title }} &gt;
 
 		include include/comments.jade

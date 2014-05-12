@@ -462,6 +462,18 @@
                                 "default_value": "no"
                             }
                         ]
+                    },
+                    {
+                        "parts_per_line": 3,
+                        "parts":[
+                            {
+                                "key": "weixin_token",
+                                "title": "WeiXin Token",
+                                "title_zh_cn": "微信公众平台Token",
+                                "only_lang": "zh_cn"
+                            }
+                        ]
+
                     }
                 ]
             },
