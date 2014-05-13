@@ -40,7 +40,7 @@ if rv.nonce and rv.timestamp
 	weixin_token = get_var('weixin_token') or site.configs.weixin_token or 'farbox'
 	if rv.signature != get_hash(weixin_token, rv.nonce, rv.timestamp, hashlib='sha1')
 		+raise_404()
-	if timestamp_diff(rv.timestamp)>30
+	if timestamp_diff(rv.timestamp)>120
 		+raise_404()
 
 	if request.method == 'GET'
