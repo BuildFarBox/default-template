@@ -58,9 +58,6 @@ if WebSocket? and JSON?
         socket.onclose = ->
             if (new Date() - connectted_at)/1000 > 10
                 connect_to_farbox() #reconnect
-        socket.onerror =->
-            if (new Date() - connectted_at)/1000 > 10
-                connect_to_farbox()
     keep_live = =>
         if socket
             socket.send('ping')

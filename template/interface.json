@@ -418,18 +418,6 @@
                                 "default_value": "no"
                             }
                         ]
-                    },
-                    {
-                        "parts_per_line": 1,
-                        "parts":[
-                            {
-                                "key": "nano",
-                                "title": "<small>beta</small> Join Nano Network, Make Web Fast. <a href='http://status.farbox.org/service/nano-network' target=_blank> status </a>",
-                                "title_zh_cn": "<small>beta</small> 加入Nano Network, 加速你的网站. <a href='http://status.farbox.org/service/nano-network' target=_blank> status </a>",
-                                "model":"check",
-                                "default_value": "no"
-                            }
-                        ]
                     }
                 ]
             },

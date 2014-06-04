@@ -11,8 +11,11 @@ html
 		load('fonts /template/css/blog.scss')
 	body
 		#body_wrapper
-			site_cover = site.configs.cover if site.configs.cover and has(site.configs.cover) else '/farbox_free_image.jpg'
-			header.header(style="background-image: url({{site_cover}})")
+			if site.configs.cover and has(site.configs.cover)
+				site_cover = site.configs.cover
+			else
+				site_cover = '/farbox_free_image.jpg'
+			header.header(style="background-image: url({{site_cover}}?height=428&width=1280&fixed=true)")
 				.header_wrapper
 					h1.title
 						a(href='/')= site.title

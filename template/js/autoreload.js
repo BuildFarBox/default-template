@@ -80,12 +80,7 @@
           return path_blocks[note.path] = false;
         }
       };
-      socket.onclose = function() {
-        if ((new Date() - connectted_at) / 1000 > 10) {
-          return connect_to_farbox();
-        }
-      };
-      return socket.onerror = function() {
+      return socket.onclose = function() {
         if ((new Date() - connectted_at) / 1000 > 10) {
           return connect_to_farbox();
         }
