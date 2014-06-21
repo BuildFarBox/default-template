@@ -416,6 +416,13 @@
                                 "title_zh_cn": "<small>beta</small> 自动美化照片. <a href='http://demo-for.farbox.com/post/amazing-images-demo' target=_blank> demo </a>",
                                 "model":"check",
                                 "default_value": "no"
+                            },
+                            {
+                                "key": "smart_login",
+                                "title": "<small>beta</small> Smart Login",
+                                "title_zh_cn": "<small>beta</small> 智能登录",
+                                "model":"check",
+                                "default_value": "no"
                             }
                         ]
                     }
@@ -450,18 +457,6 @@
                                 "default_value": "no"
                             }
                         ]
-                    },
-                    {
-                        "parts_per_line": 3,
-                        "parts":[
-                            {
-                                "key": "weixin_token",
-                                "title": "WeiXin Token",
-                                "title_zh_cn": "微信公众平台Token",
-                                "only_lang": "zh_cn"
-                            }
-                        ]
-
                     }
                 ]
             },
@@ -537,8 +532,8 @@
                         "parts": [
                             {
                                 "key": "domain",
-                                "title": "Domain  <a target='_blank' href='http://doc.farbox.com/read/domain'> need help?</a>",
-                                "title_zh_cn": "域名 <a target='_blank' href='http://doc.farbox.com/read/domain'> need help?</a>"
+                                "title": "Domain  <a target='_blank' href='http://help.farbox.com/read/domain'> need help?</a>",
+                                "title_zh_cn": "域名 <a target='_blank' href='http://help.farbox.com/read/domain'> need help?</a>"
 
                             }
                         ]
