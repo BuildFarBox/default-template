@@ -26,6 +26,7 @@ html
 			p, a {
 				color: #999;
 				text-decoration: none;
+				display: block;
 			}
 			p {
 				margin-left: 100px;;
@@ -68,9 +69,15 @@ html
 			h1
 				a(href="/") Page Not Found.
 			p
-				a(href="http://doc.farbox.com/read/how-to-make-a-template#item-1-6", target="_blank")
-					small &gt;
-					| &nbsp; custom this page by '/template/404.html'
+				if site.configs.template_inherit==False
+					a(href="#")
+						small &gt;
+						| &nbsp; Maybe you should not set `Inherits from Default Template` to `False`!
+				else
+					a(href="http://help.farbox.com/read/how-to-make-a-template", target="_blank")
+						small &gt;
+						| &nbsp; custom this page by '/template/404.html'
+
 		p.back
 			small back to
 			a(href="/") &nbsp;Home

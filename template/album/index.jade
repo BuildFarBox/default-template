@@ -5,7 +5,7 @@ html
 			title= 'Albums'
 		else
 			title= folder.title or site.title
-		load("pure /template/css/album.scss")
+		load("pure /template/album/style.scss")
 	body
 		if is_index
 			.body_wrap
@@ -47,10 +47,13 @@ html
 						.box-container
 							if im.content_type == 'folder'
 								a(href='/album/{{im.path}}')
+									if im.images_count == 1
+										span.sub_folder= '1 photo'
+									else
+										span.sub_folder= '%s photos'%im.images_count
 									img(src="{{ im.url }}?width=320&height=214&fixed=true", alt=im.title)
 									.caption
 										span= im.title
-											small= im.images_count
 							else
 								a.fb-image(href="#")
 									img(src="{{ im.url }}?width=320&height=214&fixed=true", alt=im.title)
@@ -92,8 +95,8 @@ html
 			if not is_index
 				load("fonts jquery#1.8.1 knockout")
 				//load('http://maps.google.com/maps/api/js?sensor=true')
-				//load('/template/js/gmaps.js')
-				load("/template/js/album.js")
+				//load('/template/album/js/gmaps.js')
+				load("/template/album/js/album.coffee")
 
 			script(type="text/javascript")
 				var images = {{ sub_images.json}};

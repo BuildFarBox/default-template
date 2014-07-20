@@ -177,10 +177,30 @@ body {
             color: #555;
             font-size: 14px;
 
+            .sub_folder{
+                position: absolute;
+                display: none;
+                background: rgba(0, 0, 0, 0.5);
+                width: 100%;
+                top: 40%;
+                left: 0;
+                padding: 10px 0;
+                color: #fff;
+                text-align: center;
+
+            }
+
+
             &:hover{
                 color: #111;
                 border: 1px solid #bababa;
+
+                .sub_folder{
+                    display: block;
+                }
             }
+
+
 
             .caption{
                 display: block;

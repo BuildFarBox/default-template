@@ -1,28 +1,21 @@
 extends base
 
-if request.path.startswith('/tags/') and request.path.strip('/')!='tags'
-	is_tag_posts = True
-else
-	is_tag_posts = False
-
-block title
-	if is_tag_posts
-		| {{ tags.join('+') }}
-	else
-		| {{ site.title }}
-
 block content
-	if is_tag_posts
+	if tags
 		include include/posts_list
 	else
-		group_type = 'tags' if request.path.strip('/')=='tags' else '-date:year'
-		entries = get_data(type='post',limit=300, sort='desc').group(group_type)
+		if request.path.strip('/')=='tags'
+			entries = get_data(type='post',limit=300, sort='desc').group('tags')
+		else
+			entries = get_data(type='post',limit=300, sort='desc').group('-date:year')
+
 		ul.list_with_title.container
 			for sub_title, posts in entries
-				li.listing_title= sub_title
+				h3= sub_title
 				ul.listing
 					for post in posts
 						li.listing_item
 							span.date= post.date.format("%Y-%m-%d")
 							a(href=post.url, title=post.title)= post.title
+
 		include include/paginator.jade
