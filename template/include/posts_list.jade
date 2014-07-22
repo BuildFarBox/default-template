@@ -3,7 +3,7 @@
 		.post.post_in_list
 			h2.title
 				a(href=post.url)= post.title
-			span.date Published on {{post.date.format('%Y-%m-%d')}}
+			span.date= post.date.format('Published on %Y-%m-%d')
 			.post_body= post.content.opening or post.content.limit(300)
 
 include include/paginator

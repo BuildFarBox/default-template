@@ -410,11 +410,6 @@ a {
     }
 }
 
-.clear {
-    clear: both;
-    width: 0;
-    height: 0;
-}
 
 /*footer starts*/
 #footer {
@@ -496,20 +491,6 @@ a {
         position: absolute;
         left: 0;
     }
-}
-
-
-
-ul p, ol p {
-    overflow: visible;
-}
-
-#content ul p, #content ol p {
-    overflow: visible;
-}
-
-#posts .post ul p, #posts .post ol p {
-    overflow: visible;
 }
 
 

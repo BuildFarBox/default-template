@@ -65,6 +65,13 @@ ul ol, ol ul {
 
 ul p, ol p, li p, .content li p, blockquote p, .content blockquote p, .post blockquote p, .post li p{
     margin: 0;
+    overflow: visible;
+}
+
+a{
+    img{
+        border: none;
+    }
 }
 
 dl dt {

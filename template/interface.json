@@ -2,12 +2,12 @@
     {
         "title": "Site",
         "title_zh_cn": "网站设置",
-        "title_zh_tw": "網站設置",
+        "title_zh_tw": "網站設定",
         "groups": [
             {
                 "title": "Site Info",
                 "title_zh_cn": "网站信息",
-                "title_zh_tw": "網站信息",
+                "title_zh_tw": "網站訊息",
                 "cells": [
                     {
                         "parts_per_line": 3,
@@ -30,8 +30,8 @@
                             {
                                 "key": "avatar",
                                 "title": "Site Avatar (drag image here to replace)",
-                                "title_zh_cn": "网站头像 (拖入图片替换)",
-                                "title_zh_tw": "網站頭像 (拖入圖片替換)",
+                                "title_zh_cn": "网站头像 (拖曳圖片更換)",
+                                "title_zh_tw": "網站頭像 (拖曳圖片更換)",
                                 "value": "/_image/avatar.jpg",
                                 "model": "image",
                                 "width": 120,
@@ -75,7 +75,7 @@
                                 "key": "posts_per_page",
                                 "title": "Posts per Page",
                                 "title_zh_cn": "每页显示日志数",
-                                "title_zh_tw": "每頁顯示日志數",
+                                "title_zh_tw": "每頁顯示文章數",
                                 "default_value": 3
                             },
                             {
@@ -112,7 +112,7 @@
                                     },
                                     {
                                         "value": "plain",
-                                        "title": "普通文本+圖片"
+                                        "title": "一般文本+圖片"
                                     }
                                 ]
                             },
@@ -171,15 +171,15 @@
                                 "key": "file_path",
                                 "title": "Albums Root Path",
                                 "title_zh_cn": "相册根目录",
-                                "title_zh_tw": "相冊根目錄",
+                                "title_zh_tw": "相簿位置",
                                 "model": "select",
                                 "options": "root"
                             },
                             {
                                 "key": "show_toc",
                                 "title": "Table of Contents",
-                                "title_zh_cn": "正文自动目录",
-                                "title_zh_tw": "正文自動目錄",
+                                "title_zh_cn": "文章自动目录",
+                                "title_zh_tw": "文章自動目錄",
                                 "model": "select",
                                 "default_value": "no",
                                 "options": [
@@ -343,7 +343,7 @@
                                     },
                                     {
                                         "value": "default",
-                                        "title": "默認模板"
+                                        "title": "預設模板"
                                     }
                                 ]
                             },
@@ -351,7 +351,7 @@
                                 "key": "template_inherit",
                                 "title": "Base Template Inherit",
                                 "title_zh_cn": "基础模板继承",
-                                "title_zh_tw": "基礎模板繼承",
+                                "title_zh_tw": "基礎模板引用",
                                 "model": "select",
                                 "default_value": "yes",
                                 "options": [
@@ -367,7 +367,7 @@
                                 "options_zh_cn": [
                                     {
                                         "value": "yes",
-                                        "title": "从默认模板继承"
+                                        "title": "引用預設模板"
                                     },
                                     {
                                         "value": "no",
@@ -389,7 +389,7 @@
                                 "key": "template_clone_allowed",
                                 "title": "Allow Template Clone",
                                 "title_zh_cn": "允许模板克隆",
-                                "title_zh_tw": "允許模板克隆",
+                                "title_zh_tw": "允許複製模板",
                                 "model": "select",
                                 "default_value": "yes",
                                 "options": [
@@ -415,7 +415,7 @@
                                 "options_zh_tw": [
                                     {
                                         "value": "yes",
-                                        "title": "允許別人克隆模板"
+                                        "title": "允許別人複製模板"
                                     },
                                     {
                                         "value": "no",
@@ -519,14 +519,14 @@
                                 "key": "scripts_per_page",
                                 "title": "Insert following code into every HTML page.",
                                 "title_zh_cn": "将下面的代码插入到每个HTML页面中",
-                                "title_zh_tw": "將下面的代碼插入到每個HTML頁面中",
+                                "title_zh_tw": "將下面的程式碼插入到每個HTML頁面中",
                                 "model":"textarea"
                             },
                             {
                                 "key": "scripts_for_doc",
                                 "title": "Insert following code into Doc(post/image) page.",
                                 "title_zh_cn": "将下面的代码插入到文档(日志或图片)详细页中",
-                                "title_zh_tw": "将下面的代碼插入到文檔(日誌或圖片)詳細頁中",
+                                "title_zh_tw": "將下面程式碼插入文件（文章或圖片）頁面內",
                                 "model":"textarea"
                             }
                         ]
@@ -560,7 +560,7 @@
                                 "key": "smart_login",
                                 "title": "<small>beta</small> Smart Login",
                                 "title_zh_cn": "<small>beta</small> 智能登录",
-                                "title_zh_tw": "<small>beta</small> 智能登錄",
+                                "title_zh_tw": "<small>beta</small> 智能登入",
                                 "model":"check",
                                 "default_value": "no"
                             }
@@ -607,7 +607,7 @@
             {
                 "title":"Data Mining",
                 "title_zh_cn":"数据挖掘",
-                "title_zh_tw":"數據挖掘",
+                "title_zh_tw":"资料探勘",
                 "cells":[
                     {
                         "parts_per_line": 3,
