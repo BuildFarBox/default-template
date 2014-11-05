@@ -2,6 +2,7 @@ doctype xml
 +set_content_type('application/xml')
 feed(xmlns="http://www.w3.org/2005/Atom")
 	title= site.title
+	description= site.content.escaped
 	link(href="http://{{ request.host }}/")
 	link(ref="self", href="http://{{ request.host }}/feed")
 	id= site._id

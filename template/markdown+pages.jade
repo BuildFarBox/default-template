@@ -4,5 +4,7 @@ if request.path.startswith('/pages')
 block title
 	title= post.title
 block content
-	.post.markdown_container
-		.post_body.markdown_body= post.content
+	.detail.markdown_container
+		.post
+			.content
+				.post_body.markdown_body= post.content

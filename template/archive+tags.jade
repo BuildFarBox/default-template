@@ -1,21 +1,18 @@
 extends base
 
 block content
-	if tags
-		include include/posts_list
+	if request.path.strip('/')=='tags'
+		entries = get_data(type='post',limit=300, sort='desc').group('tags')
 	else
-		if request.path.strip('/')=='tags'
-			entries = get_data(type='post',limit=300, sort='desc').group('tags')
-		else
-			entries = get_data(type='post',limit=300, sort='desc').group('-date:year')
+		entries = get_data(type='post',limit=300, sort='desc').group('-date:year')
 
-		ul.list_with_title.container
-			for sub_title, posts in entries
-				h3= sub_title
-				ul.listing
-					for post in posts
-						li.listing_item
-							span.date= post.date.format("%Y-%m-%d")
-							a(href=post.url, title=post.title)= post.title
+	ul.list_with_title.container
+		for sub_title, posts in entries
+			h3= sub_title
+			ul.listing
+				for post in posts
+					li.listing_item
+						a(href=post.url, title=post.title)= post.title
+						span.date= post.date.format("%Y-%m-%d")
 
-		include include/paginator.jade
+	include include/paginator.jade

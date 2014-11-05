@@ -555,14 +555,6 @@
                                 "title_zh_cn": "<small>beta</small> 自动美化照片. <a href='http://help.farbox.com/read/auto-image-enhance' target=_blank> demo </a>",
                                 "model":"check",
                                 "default_value": "no"
-                            },
-                            {
-                                "key": "smart_login",
-                                "title": "<small>beta</small> Smart Login",
-                                "title_zh_cn": "<small>beta</small> 智能登录",
-                                "title_zh_tw": "<small>beta</small> 智能登入",
-                                "model":"check",
-                                "default_value": "no"
                             }
                         ]
                     }
@@ -684,6 +676,7 @@
                         "parts": [
                             {
                                 "key": "domain",
+                                "placeholder": "xxx.farbox.com",
                                 "title": "Domain  <a target='_blank' href='http://help.farbox.com/read/domain'> need help?</a>",
                                 "title_zh_cn": "域名 <a target='_blank' href='http://help.farbox.com/read/domain'> need help?</a>",
                                 "title_zh_tw": "域名 <a target='_blank' href='http://help.farbox.com/read/domain'> need help?</a>"
@@ -705,6 +698,27 @@
                                 "title": "one line one domain which needed to bind, no more than 10 lines.",
                                 "title_zh_cn": "每行一条需绑定的域名，最多不超过10条",
                                 "title_zh_tw": "每行一條需綁定的域名，最多不超過10條",
+                                "model":"textarea",
+                                "is_list": true
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Customize DNS Records",
+                "title_zh_cn":"自定义DNS记录",
+                "title_zh_tw":"自定義DNS記錄",
+                "cells":[
+                    {
+                        "parts_per_line": 1,
+                        "parts":[
+                            {
+                                "key": "dns",
+                                "placeholder": "xxxxxxxxxxxx@TXT\nxxxxxxxxxxxx@MX#5\nxxxxxxxxxxxx@MX#10",
+                                "title": "one line one record, no more than 20 lines, supports TXT/MX only",
+                                "title_zh_cn": "每行一条记录，最多不超过20条，仅支持TXT/MX",
+                                "title_zh_tw": "每行壹條記錄，最多不超過20條，僅支持TXT/MX",
                                 "model":"textarea",
                                 "is_list": true
                             }
