@@ -11,17 +11,24 @@ $primary: #58b798;
 
 // related colors
 $font_color2: lighten($font_color, 45%);
-$bg2: darken($bg1, 3.9%);
+$bg2: darken($bg1, 3.6%);
 $line_color: lighten($font_color, 80%);
 $line_color2: lighten($font_color, 82%);
 
 // fixed colors
-$shadow_color: rgba(0,0,0,0.26);
+$shadow_color: rgba(0,0,0,0.18);
 $easing1: cubic-bezier(0.15, 0.95, 0.41, 0.95);
 
 // responsive break points
 $phone_landscape-min: 33.37em;  //534px
 $phone_landscape-max: 47.99em;  //767px
+
+
+.border_container {
+    box-shadow: 0 1px 5px $shadow_color;
+    border: 1px solid #eee;
+    border-radius: 0.2em;
+}
 
 
 
@@ -65,10 +72,11 @@ html, body{
 }
 body {
 	line-height: 1.6;
-	font-family:  "droid-sans", "stheiti", 'hei', 'Hiragino Sans GB',"microsoft yahei", sans-serif;
+	//font-family:  "droid-sans", "stheiti", 'hei', 'Hiragino Sans GB',"microsoft yahei", sans-serif;
+    font-family: "Georgia", "Xin Gothic", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
 	font-size: 1em;
 	color: $font_color;
-	background: $bg2;
+	background: $bg1;
     overflow-x: hidden;
 }
 
@@ -114,17 +122,15 @@ input, textarea, button {
 #header {
     background: #303538 no-repeat center center;
     background-size: cover;
-    height: 320px;
-
-    box-shadow: 0 0.1em 0.15em $shadow_color;
+    height: 260px;
 
     .header_wrapper {
-        padding-top:120px;
+        padding-top:80px;
 
         h1 {
             padding: 0;
             margin: 0;
-            font-size: 2.5em;
+            font-size: 2.0em;
             text-align: center;
             a {
                 letter-spacing: -1px;
@@ -187,9 +193,9 @@ input, textarea, button {
         }
         p {
             line-height: 1.8;
-            margin: 0 0 1.5em;
+            margin: 0 0 1.7em;
             br{
-                line-height: 2.3;
+                line-height: 2.1;
             }
         }
         a {
@@ -243,7 +249,7 @@ input, textarea, button {
         blockquote {
             padding: 1.5em 1.8em;
             margin: 0 0 1.2em;
-            background: $line_color;
+            background: lighten($line_color, 8%);;
             border-left: 2px solid darken($line_color, 10%);
             font-size: 0.8em;
             p {
@@ -268,9 +274,13 @@ input, textarea, button {
             font-size: 0.75em;
             margin-top: 2.5em;
             i{
-                margin-right: 3px;
+                margin-right: 5px;
                 position: relative;
                 top: -1px;
+                font-size: 1.1em;
+            }
+            span{
+                font-family: droid-sans, stheiti, 'microsoft yahei', sans-serif;;
             }
             .date {
                 margin: 0 1.5em 0 0;
@@ -314,8 +324,8 @@ input, textarea, button {
 
 .detail{
     position: relative;
-    background: $bg1;
-    box-shadow: 0 0.1em 0.35em $shadow_color;
+    @extend .border_container;
+
     .content {
         padding: 2.5em;
 
@@ -380,15 +390,28 @@ input, textarea, button {
 .list {
 
     .post {
-        margin: 0 0 2.5em;
-        background: $bg1;
-        box-shadow: 0 0.1em 0.35em $shadow_color;
+        margin: 0 0 4.5em;
+        @extend .border_container;
+        border: 1px solid #f0f0f0;
+        border-radius: 0.2em;
         .content {
             padding: 3em;
         }
         .title {
-            margin: 0 0 1em;
             font-size: 1.875em;
+            font-weight: normal;
+            margin: 0 0 1em;
+			padding: 0 0 1em;
+            border-bottom: 1px solid $line_color;
+
+            a{
+                color: darken($font_color, 10%);
+
+                &:hover{
+                    color: $primary;
+                    border-bottom: none;
+                }
+            }
         }
         .post_body {
             img {
@@ -405,6 +428,12 @@ input, textarea, button {
 		.post {
 			float: left;
 			width: 50%;
+            border: none;
+
+            .title{
+                padding: 0;
+                border-bottom: none;
+            }
 		}
 	}
 }
@@ -414,6 +443,7 @@ input, textarea, button {
 		.post {
 			position: relative;
             box-shadow: 0 0.1em 0.1em $shadow_color;
+            border: none;
             margin: 0;
 			.content {
 				height: 7.475em;
@@ -425,6 +455,10 @@ input, textarea, button {
 					font-size: 1.125em;
                     overflow: hidden;
 					margin: 0.5em 0 0.4em;
+
+                    padding: 0;
+                    border-bottom: none;
+
 					a {
 						font-weight: bold;
 					}
@@ -565,7 +599,7 @@ input, textarea, button {
 .list_with_title {
     font-size: 16px;
     background: $bg1;
-    box-shadow: 0 0.1em 0.35em $shadow_color;
+    @extend .border_container;
     padding: 1.5em 3em;
     margin: 0;
 
@@ -718,7 +752,8 @@ input, textarea, button {
 // main container
 
 #main, #fb_comments_container{
-    padding: 1.875em 0;
+    //padding: 1.875em 0;
+    padding: 2.7em 0;
     margin: 1.5em 4%;
 }
 
@@ -738,6 +773,11 @@ input, textarea, button {
     }
 }
 
+@media only screen and (min-width: 960px){
+    #main, #fb_comments_container{
+        //margin: 1.5em 8%;
+    }
+}
 
 
 
